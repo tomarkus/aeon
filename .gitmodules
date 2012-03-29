@@ -1,0 +1,3 @@
+[submodule "django_rocket"]
+	path = django_rocket
+	url = git://github.com/xando/django_rocket.git
