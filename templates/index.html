@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<img src="{{ STATIC_PREFIX }}images/newsH.png" class="pageH" />
+<div class="wpis">
+  <div class="dataBox">
+    <p><span class="cyfry">23</span><br />VII 2010</p>
+  </div>
+  <div class="artykul separator">
+    <h1><a href="art.html"> Title lorem ipsum</a></h1>
+    <p> 
+      Lorem  ipsum dolor sit amet,  consectetur adipiscing
+      elit.  Donec   nec  erat   orci,  sit   amet  ultrices
+      orci. Praesent at dui  massa. Curabitur aliquam auctor
+      nisl,  in elementum  metus laoreet  dignissim. Quisque
+      ullamcorper,  urna et  ultricies gravida,  felis lacus
+      tempus   massa,   vitae   congue   ligula   felis   ut
+      tortor. Vivamus  eget odio nunc. Vestibulum  at tellus
+      nibh,  eget blandit  purus. Quisque  venenatis, mauris
+      nec  porttitor blandit,  odio  mi  suscipit lorem,  in
+      vehicula ante  risus vitae  lectus. Nunc  augue risus,
+      mollis    luctus    tristique   a,    facilisis    vel
+      tellus.              
+      <a class="borderfree" href="art.html">
+	<img src="{{ STATIC_PREFIX }}images/arrow.png" />
+      </a>
+    </p>
+  </div>
+</div>
+
+<p class="paginacja">
+  <a href="#">1</a>
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">&gt;</a>
+</p>
+
+{% endblock %}

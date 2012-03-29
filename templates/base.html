@@ -1,0 +1,104 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta name="generator" content="WebSite PRO 4.3" />
+    <title>Aeon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+    <link href="{{ STATIC_PREFIX }}stylesheets/main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ STATIC_PREFIX }}swfobject.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_PREFIX }}js/jquery.js"></script>
+    <script type="text/javascript" src="{{ STATIC_PREFIX }}js/jquery.lightbox-0.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}css/jquery.lightbox-0.5.css" media="screen" />
+    <script type="text/javascript">
+      $(function() {
+      $('#gallerypictures a').lightBox();
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="top-behind"></div>
+    <div id="wrapper">
+      <div id="menu">
+	
+ 	<a class="newsbtnA" href="{% url index %}">&nbsp;</a>
+ 	<a class="aboutbtn" href="{% url about %}">&nbsp;</a>
+ 	<a class="musicbtn" href="{% url music %}">&nbsp;</a>
+	<a class="contactbtn" href="{% url contact %}">&nbsp;</a>
+	
+      </div>
+      <div id="headerdiv"></div>
+      
+      <div id="main">
+ 	<div id="col1">
+
+	  {% block content %}{% endblock %}
+	  
+	</div>
+	<div id="col2">
+	  <div id="socialchannels">
+    	    <p>
+              <a href="http://www.facebook.com" class="fbook">&nbsp;</a> 
+              <a href="http://www.myspace.com" class="mspace">&nbsp;</a>
+              <a href="http://www.youtube.com" class="ytube">&nbsp;</a>
+            </p>      
+	  </div>
+	  <p class="separatorText">&nbsp;</p>  
+	  <div id="music">
+       	    <div id="player">
+              <h1>No flash player!</h1>
+              <p>It   looks  like   you   don't   have  flash   player
+              installed. <a href="http://www.macromedia.com/go/getflashplayer"
+              >Click here</a> to go to Macromedia download page.</p>
+            </div>
+            
+            <!-- Script that embeds player. -->
+            <script type="text/javascript">
+              var so = new SWFObject("flashmp3player.swf", "player", "265", "180", "9"); // Location of swf file. You can change player width and height here (using pixels or percents).
+              so.addParam("quality", "high");
+              so.addVariable("content_path","mp3"); // Location of a folder with mp3 files (relative to php script).
+              so.addVariable("color_path","default.xml"); // Location of xml file with color settings.
+              so.addVariable("script_path","flashmp3player.php"); // Location of php script.
+	      $(document).ready(function() {
+	      so.write("player");});
+            </script>
+            
+            
+            
+            <!-- 
+		 Please place this link anywhere on the page that uses Flash MP3 Player.
+		 You can style it anyway you want, but do not change or delete it.
+		 Read the license! Thanks. :-)
+              -->
+            <p class="playerlink">Powered by <a  href="http://www.flashmp3player.org">Flash MP3 Player</a></p>
+	  </div>
+	  <div id="gallery">
+       	    <div id="gallerypictures">
+       	      <a  href="gallery/j1.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p1.jpg" /></a>
+              <a  href="gallery/j2.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p2.jpg" /></a>
+              <a  href="gallery/j3.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p3.jpg" /></a>
+              <a  href="gallery/j4.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p4.jpg" /></a>
+              <a  href="gallery/j5.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p5.jpg" /></a>
+              <a  href="gallery/j6.jpg"  title="my caption"><img src="{{ STATIC_PREFIX }}gallery/p6.jpg" /></a>
+            </div>
+	    <p><a class="more" href="gallery.html"><img src="{{ STATIC_PREFIX }}images/gallerymorebutton.png" /></a></p>
+            
+	  </div>
+	  
+	</div>
+ 	<div id="footer">
+          <p> 
+	    <a href="{% url index %}">news</a> | 
+            <a href="{% url about %}">about</a> | 
+            <a href="{% url music %}">music</a> | 
+            <a href="gallery.html">gallery</a> | 
+            <a href="{% url contact %}">contact</a> 
+          </p>
+          <p>Lorem ipsum dolor amet </p>
+        </div>
+      </div> 
+    </div>
+  </body>
+</html>

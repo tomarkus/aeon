@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flash MP3 Player</title>
+<style type="text/css">
+html {background-color:#EEEEEE;}
+body {background-color:#FFFFFF; margin:0 auto; margin-top:30px; margin-bottom:30px; padding:30px 30px 40px 30px; width:720px; color:#222222; border:1px solid #E0E0E0;}
+a {text-decoration:none; color:#2887E3;}
+a:hover {text-decoration:underline;}
+code {color: #666666;}
+table {border-collapse: collapse;}
+table td {border:1px solid #BBBBBB;}
+h1 {text-align:center; margin:0;}
+h2 {margin:25px 0 10px 0;}
+h3 {margin:10px 0 3px 0;}
+i {color:#000000;}
+</style>
+</head>
+
+<body>
+<h1>Flash MP3 Player</h1>
+<h2>License</h2>
+This application is developed by <a href="http://www.realitysoftware.ca">Reality Software</a> and released by <a href="http://www.flashmp3player.org">Flash MP3 Player</a> under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> license, which means you can use it in any way you want provided you keep our links intact.<br/>
+<b>Don't want our links in the script? You can support this project by <a href="http://www.flashmp3player.org/buy.html">purchasing</a> a paid version.</b>
+<h2>What's included</h2>
+<ul>
+  <li><i>flashmp3player.html</i> - demo use of the player with comments;</li>
+  <li><i>default.xml</i> - customizable settings;</li>
+  <li><i>flashmp3player.swf</i> - compiled Flash application;</li>
+  <li><i>flashmp3player.php</i> - script that scans folder for mp3-files and reads ID3 tags;</li>
+  <li><i>swfobject.js</i> - script that detects Flash.</li>
+</ul>
+<h2>Installation tips</h2>
+<h3>Step 1</h3>
+Copy all files to your webserver and try running <i>flashmp3player.html</i>. You should be able to listen demo songs. If it works, then move to the next step.<br/>
+<strong>Note: Your server should support PHP for this script to work.</strong>
+<h3>Step 2</h3>
+You need to embed player into your webpages. You can copy and paste code from <i>flashmp3player.html</i> or from here.<br/>
+<strong>Note: You can change the location of files in the following code. The path can be relative or absolute (except for <i>mp3</i> folder, which should always be relative to php script).</strong>
+<br/><br/>
+Add this to the head of your webpage:
+<br/>
+<code>&lt;!-- Location of javascript. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript" src="swfobject.js" &gt;&lt;/script&gt;</code>
+<br/>
+<br/>
+Add this to the body of your webpage, where you want player to appear:
+<br/>
+<code>&lt;!-- Div that contains player. --&gt;<br/>
+&lt;div id="player"&gt;<br/>
+&lt;h1&gt;No flash player!&lt;/h1&gt;<br/>
+&lt;p&gt;It looks like you don't have flash player installed. &lt;a href="http://www.macromedia.com/go/getflashplayer" &gt;Click here&lt;/a&gt; to go to Macromedia download page.&lt;/p&gt;<br/>
+&lt;/div&gt;<br/>
+<br/>
+&lt;!-- Script that embeds player. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript"&gt;<br/>
+var so = new SWFObject("flashmp3player.swf", "player", "290", "247", "9"); // Location of swf file. You can change player width and height here (using pixels or percents).<br/>
+so.addParam("quality","high");<br/>
+so.addVariable("content_path","mp3"); // Location of a folder with mp3 files (relative to php script).<br/>
+so.addVariable("color_path","default.xml"); // Location of xml file with color settings.<br/>
+so.addVariable("script_path","flashmp3player.php"); // Location of php script.<br/>
+so.write("player");<br/>
+&lt;/script&gt;</code>
+<br/>
+<br/>
+<strong>Note: You can change player width and height (using pixels or percents).</strong>
+<br/>
+<br/>
+Add this somewhere in the body of your webpage:<br/>
+<code>&lt;!-- <br/>
+Please place this link anywhere on the page that uses Flash MP3 Player.<br/>
+You can style it anyway you want, but do not change or delete it.<br/>
+Read the license! Thanks. :-)<br/>
+--&gt;<br/>
+Powered by &lt;a href="http://www.flashmp3player.org"&gt;Flash MP3 Player&lt;/a&gt;</code>
+<h3>Step 3</h3>
+Upload your mp3-files to <i>mp3</i> folder.
+<h2>Customizing player</h2>
+You can customize player looks in <i>default.xml</i> by changing the following variables:
+<br/>
+<br/>
+<table cellpadding="2" cellspacing="0">
+<tr><td><code>scroll_bar_color</code></td><td>Scrollbar color</td></tr>
+<tr><td><code>scroll_bar_bg_color</code></td><td>Scrollbar background color</td></tr>
+<tr><td><code>arrows_color</code></td><td>Scrollbar arrows color</td></tr>
+<tr><td><code>border_color</code></td><td>Borders color</td></tr>
+<tr><td><code>buttons_color1</code></td><td>1st gradient color for buttons background</td></tr>
+<tr><td><code>buttons_color2</code></td><td>2nd gradient color for buttons background</td></tr>
+<tr><td><code>buttons_normal</code></td><td>Buttons color</td></tr>
+<tr><td><code>buttons_over</code></td><td>Mouseover buttons color</td></tr>
+<tr><td><code>background_color</code></td><td>Overall background color</td></tr>
+<tr><td><code>volume_active</code></td><td>Active volume color</td></tr>
+<tr><td><code>volume_inactive</code></td><td>Inactive volume color</td></tr>
+<tr><td><code>text_normal</code></td><td>Song title color</td></tr>
+<tr><td><code>text_over</code></td><td>Mouseover song title color</td></tr>
+<tr><td><code>text_select</code></td><td>Selected song title color</td></tr>
+<tr><td><code>playlist_item_normal</code></td><td>Playlist item color</td></tr>
+<tr><td><code>playlist_item_over</code></td><td>Mouseover playlist item color</td></tr>
+<tr><td><code>playlist_item_select</code></td><td>Selected playlist item color</td></tr>
+<tr><td><code>playlist_position</code></td><td>Current playing position color</td></tr>
+<tr><td><code>autoplay</code></td><td>Starts playing on page load (on, off)</td></tr>
+<tr><td><code>autoresume</code></td><td>Saves playing position and volume when user moves from page to page (on, off)</td></tr>
+<tr><td><code>default_volume</code></td><td>Default volume (from 0 to 100)</td></tr>
+<tr><td><code>numeration</code></td><td>Songs numeration (on, off)</td></tr>
+<tr><td><code>time</code></td><td>Song timer (elapsed, remaining, total, off)</td></tr>
+</table>
+<h2>Support</h2>
+Please do not hesitate to <a href="http://www.flashmp3player.org/support.html">contact us</a> if you have any questions or suggestions or if you want to report a bug.
+</body>
+</html>
