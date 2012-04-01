@@ -6,9 +6,6 @@ class PostList(ListView):
     template_name = 'index.html'
     paginate_by = 4
 
-    def get(self, *args, **kwargs):
-        return super(PostList, self).get(*args, **kwargs)
-
 index = PostList.as_view()
 
 class PostDetail(DetailView):
