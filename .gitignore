@@ -1,0 +1,5 @@
+*.pyc
+_*
+.#*
+development.db
+.google_appengine
