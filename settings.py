@@ -1,5 +1,6 @@
 # Django settings for aeon project.
 import os
+from django_rocket import on_appengine
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -12,16 +13,27 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+# import ipdb; ipdb.set_trace()
+
+if on_appengine:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_rocket.db.backends.cloudsql',
+        'INSTANCE': 'xando-1-main:aeon',
+            'NAME': 'test',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(SITE_ROOT, 'development.db')
+        }
+    }
+
+
+APPENGINE_PRE_UPDATE = 'appengine_hooks.pre_update'
+APPENGINE_POST_UPDATE = 'appengine_hooks.post_update'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -90,7 +102,7 @@ SECRET_KEY = '*^r+&30v$+0jugh(m9r%ei(%_w+(#^%-uclv%n!&gsmpkp!!6p'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,11 +126,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
-    'django_rocket'
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+
+    'django_rocket',
+    'blog'
 )
 
 # A sample logging configuration. The only tangible logging
