@@ -1,8 +1,21 @@
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
+from aeon.blog import models
 
-class Index(TemplateView):
+class PostList(ListView):
+    model = models.Post
     template_name = 'index.html'
-index = Index.as_view()
+    paginate_by = 4
+
+    def get(self, *args, **kwargs):
+        return super(PostList, self).get(*args, **kwargs)
+
+index = PostList.as_view()
+
+class PostDetail(DetailView):
+    model = models.Post
+    template_name = 'post_detail.html'
+
+post_detail = PostDetail.as_view()
 
 class About(TemplateView):
     template_name = 'about.html'

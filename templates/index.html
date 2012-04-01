@@ -2,39 +2,40 @@
 
 {% block content %}
 <img src="{{ STATIC_PREFIX }}images/newsH.png" class="pageH" />
+
+{% for post in object_list %}
+
 <div class="wpis">
   <div class="dataBox">
-    <p><span class="cyfry">23</span><br />VII 2010</p>
+    <p>
+      <span class="cyfry">{{ post.created.day }}</span>
+      <br />{{ post.created|date:"M Y" }}
+    </p>
   </div>
   <div class="artykul separator">
-    <h1><a href="art.html"> Title lorem ipsum</a></h1>
+    <h1><a href="{{ post.get_absolute_url }}"> {{ post.title|slice:"30" }}</a></h1>
     <p> 
-      Lorem  ipsum dolor sit amet,  consectetur adipiscing
-      elit.  Donec   nec  erat   orci,  sit   amet  ultrices
-      orci. Praesent at dui  massa. Curabitur aliquam auctor
-      nisl,  in elementum  metus laoreet  dignissim. Quisque
-      ullamcorper,  urna et  ultricies gravida,  felis lacus
-      tempus   massa,   vitae   congue   ligula   felis   ut
-      tortor. Vivamus  eget odio nunc. Vestibulum  at tellus
-      nibh,  eget blandit  purus. Quisque  venenatis, mauris
-      nec  porttitor blandit,  odio  mi  suscipit lorem,  in
-      vehicula ante  risus vitae  lectus. Nunc  augue risus,
-      mollis    luctus    tristique   a,    facilisis    vel
-      tellus.              
-      <a class="borderfree" href="art.html">
+      {{ post.content|safe|slice:"500" }}
+      {% if post.content|length > 500 %}
+      <a class="borderfree" href="{{ post.get_absolute_url }}">
+	...
+      </a>
+      {% endif %}
+      <a class="borderfree" href="{{ post.get_absolute_url }}">
 	<img src="{{ STATIC_PREFIX }}images/arrow.png" />
       </a>
     </p>
   </div>
 </div>
+{% endfor %}
 
+
+{% if paginator.num_pages > 1 %}
 <p class="paginacja">
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">&gt;</a>
+  {% for value in paginator.page_range %}
+  <a href="#">{{ value }}</a>
+  {% endfor %}
 </p>
+{% endif %}
 
 {% endblock %}

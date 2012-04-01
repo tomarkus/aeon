@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<img src="{{ STATIC_PREFIX }}images/newsH.png" class="pageH" />
+
+<div class="wpis">
+  <div class="dataBox">
+    <p>
+      <span class="cyfry">{{ post.created.day }}</span>
+      <br />{{ post.created|date:"M Y" }}
+    </p>
+  </div>
+  <div class="artykul separator">
+    <h1><a href="art.html"> {{ post.title|slice:"30" }}</a></h1>
+    <p> 
+      {{ post.content|safe }}
+    </p>
+  </div>
+</div>
+
+{% endblock %}
