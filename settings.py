@@ -23,6 +23,7 @@ if on_appengine:
             'NAME': 'test',
         }
     }
+    DEBUG = False
 else:
     DATABASES = {
         'default': {
@@ -30,6 +31,7 @@ else:
             'NAME': os.path.join(SITE_ROOT, 'development.db')
         }
     }
+    DEBUG = True
 
 
 APPENGINE_PRE_UPDATE = 'appengine_hooks.pre_update'
