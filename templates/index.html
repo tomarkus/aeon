@@ -15,8 +15,8 @@
   <div class="artykul separator">
     <h1><a href="{{ post.get_absolute_url }}"> {{ post.title|slice:"30" }}</a></h1>
     <p> 
-      {{ post.content|safe|slice:"500" }}
-      {% if post.content|length > 500 %}
+      {{ post.content|safe|linebreaks|slice:"300"}}
+      {% if post.content|length > 300 %}
       <a class="borderfree" href="{{ post.get_absolute_url }}">
 	...
       </a>

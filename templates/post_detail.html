@@ -13,7 +13,7 @@
   <div class="artykul separator">
     <h1><a href="art.html"> {{ post.title|slice:"30" }}</a></h1>
     <p> 
-      {{ post.content|safe }}
+      {{ post.content|safe|linebreaks }}
     </p>
   </div>
 </div>
