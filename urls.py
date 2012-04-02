@@ -11,10 +11,12 @@ urlpatterns = patterns('',
         name='index'),
     url(r'^(?P<slug>.*)/(?P<pk>\d+)/$', 'aeon.blog.views.post_detail',
         name='post_detail'),
-    url(r'^about/$', 'aeon.blog.views.about', name='about'),
-    url(r'^music/$', 'aeon.blog.views.music', name='music'),
-    url(r'^contact/$', 'aeon.blog.views.contact', name='contact'),
-
+    url(r'^about/$', 'aeon.blog.views.about',
+        name='about'),
+    url(r'^music/$', 'aeon.blog.views.music',
+        name='music'),
+    url(r'^contact/$', 'aeon.blog.views.contact',
+        name='contact'),
 )
 
 

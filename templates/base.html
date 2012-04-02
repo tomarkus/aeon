@@ -1,5 +1,7 @@
+{% load tags %}
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
@@ -22,11 +24,14 @@
     <div id="top-behind"></div>
     <div id="wrapper">
       <div id="menu">
-	
- 	<a class="newsbtnA" href="{% url index %}">&nbsp;</a>
- 	<a class="aboutbtn" href="{% url about %}">&nbsp;</a>
- 	<a class="musicbtn" href="{% url music %}">&nbsp;</a>
-	<a class="contactbtn" href="{% url contact %}">&nbsp;</a>
+ 	<a class="newsbtn{% active "index" %}{% active "post_detail" %}" 
+	   href="{% url index %}">&nbsp;</a>
+ 	<a class="aboutbtn{% active "about" %}" 
+	   href="{% url about %}">&nbsp;</a>
+ 	<a class="musicbtn{% active "music" %}" 
+	   href="{% url music %}">&nbsp;</a>
+	<a class="contactbtn{% active "contact" %}" 
+	   href="{% url contact %}">&nbsp;</a>
 	
       </div>
       <a href="/">
@@ -35,7 +40,7 @@
       
       <div id="main">
  	<div id="col1">
-
+	  {% active "home" %}
 	  {% block content %}{% endblock %}
 	  
 	</div>
