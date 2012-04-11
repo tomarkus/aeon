@@ -6,4 +6,5 @@ def pre_update():
 
 def post_update():
     call_command('on_appengine', 'syncdb')
+    call_command('on_appengine', 'migrate')
 

@@ -121,6 +121,7 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
 
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,7 +133,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'django_rocket',
-    'blog'
+    'blog',
+    'south'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
