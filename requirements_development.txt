@@ -1,7 +1,7 @@
 Django==1.4
 South==0.7.4
 distribute==0.6.26
--e git+git@github.com:xando/django_rocket.git@1d7bf5514a6eac38f5feaa0708648db3c7d393d9#egg=django_rocket-dev
+git+git://github.com/xando/django_rocket.git
 ipdb==0.6.1
 ipython==0.12
 virtualenv==1.7.1.2
