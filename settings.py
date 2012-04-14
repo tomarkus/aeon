@@ -132,9 +132,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
-    'django_rocket',
     'blog',
-    'south'
+    'south',
+    'django_rocket',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
